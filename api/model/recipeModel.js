@@ -8,9 +8,10 @@ import fs from "fs";
 // cevap gelmeden onu işleyemeyiz
 // js default olarak beklemez ve hızla gerçekleştirir
 // async olarak zaman alan bir fonsiyon varsa beklememiz gerekiyorsa "await" ile söylemeliyiz.
-export const readRecipes = async () => {
+// * JSON dosyasının içeriğini okur ve döndürür
+export const readRecipes = () => {
     try {
-        const text = await fs.readFileSync("../data.json", "utf-8");
+        const text = fs.readFileSync("./data.json", "utf-8");
         const data = JSON.parse(text);
 
         return data;
