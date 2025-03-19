@@ -7,7 +7,7 @@ export const getAllRecipes = (req, res) => {
 const recipes = [...data];
 
 //aratılan kelime
-const search = req.query?.search.toLowerCase();
+const search = req.query?.search?.toLowerCase();
 
 // eğer search parametresi geldiyse filtreleme yap
 if (search) {
@@ -16,7 +16,14 @@ recipe.recipeName.toLowerCase().includes(search)
     );
 }
 
-
+// eğer port parametresi geldiyse sıralama yap
+if(req.query.order) {
+    recipes.sort((a, b) => 
+        req.query.order === "asc"
+    ? a.recipeTime - b.recipeTime
+    : b.recipeTime - a.recipeTime
+    );
+}
 
     res.status(200).json({
         status:"success",
@@ -25,7 +32,19 @@ recipe.recipeName.toLowerCase().includes(search)
     });
 };
 
-export const createRecipe = (req, res) => {};
+export const createRecipe = (req, res) => {
+    // 1) isteğin body bölümünde gelen veriye eriş
+
+    // 2) veri bütünlüğünü kontrol et
+
+    // 3) veriye id ekle
+
+    // 4) tarif verisini diziye ekle
+
+    // 5) json dosyasını güncelle
+
+    // 6) cevap gönder
+};
 
 export const getRecipe = (req, res) => {};
 
